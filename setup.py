@@ -5,7 +5,7 @@ setup(
     version='0.0a2',
     packages=['pyfhi'],
     url='https://github.com/TheOneHyer/PyFHI',
-    download_url='https://github.com/TheOneHyer/PyFHI/tarball/0.0a1',
+    download_url='https://github.com/TheOneHyer/PyFHI/tarball/0.0a2',
     license='GPLv2',
     author='TheOneHyer',
     author_email='theonehyer@gmail.com',
