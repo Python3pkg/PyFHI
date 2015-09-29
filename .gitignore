@@ -39,7 +39,6 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
-/pyfhi/test
 .coverage.*
 .cache
 nosetests.xml
@@ -61,5 +60,9 @@ target/
 
 # PyCharm
 .idea
+
+# Custom
+/MANIFEST
+/pyfhi/test
 
 # Created by .ignore support plugin (hsz.mobi)
