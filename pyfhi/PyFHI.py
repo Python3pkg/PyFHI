@@ -1,14 +1,26 @@
 #!/usr/bin/env python
 
-"""Contains importable Open class to extend Python file handling"""
+"""Contains Open and filecloser, the two key components of PyFHI
+
+This file is essentially all there is to PyFHI (Python File Handling Improved),
+one simply needs to import the one function and one class of this file to
+receive the functionality improvements of PyFHI. The README contains details
+of Open and filecloser but a minimally functional explanation of proper
+usage follows:
+
+import pyfhi
+Change all instances of 'open' to 'Open' (capitalize the 'O', this doesn't
+                                          apply to things such as os.open)
+Add '@filecloser' before each function you wish to wrap (ideally main())
+"""
 
 import sys
 
-__version__ = '0.0a3'
+__version__ = '1.0.0'
 
 
 class Open(object):
-    """File-wrapping class with added functionality
+    """File-wrapping class with added functionality and improved features
 
     The Open correctly mimics all methods and attributes of Python File
     Objects. See Python documentation for information on said methods and
@@ -38,10 +50,14 @@ class Open(object):
     def __init__(self, file, *args, **kwargs):
         """Initializes instance, opens file, and gets file attributes
 
-        :rtype : None
         :param file: File to be opened
+        :type file: str
+
         :param args: Arguments to be passed to the File Object such as mode
+        :type args: various
+
         :param kwargs: Keyword Arguments version of args
+        :type kwargs: various
         """
 
         # Initialize and record instance and open file
@@ -62,6 +78,7 @@ class Open(object):
     def __str__(self):
         """Returns summary of Open instance self
 
+        :returns : instance-dependent data on the file handle
         :rtype : str
         """
 
@@ -75,7 +92,8 @@ class Open(object):
     def __enter__(self):
         """Makes Open compatible with 'with' statements
 
-        :rtype : self
+        :returns : self
+        :rtype : class
         """
 
         return self
@@ -83,7 +101,8 @@ class Open(object):
     def __iter__(self):
         """Makes Open iterable
 
-        :rtype : self
+        :returns : self
+        :rtype : class
         """
 
         return self
@@ -91,9 +110,14 @@ class Open(object):
     def __next__(self, *args, **kwargs):
         """Detects Python version, calls proper next method, and returns line
 
+        :returns : Next line of file
         :rtype : str
+
         :param args: Arguments to be passed the File Object
+        :type args: various
+
         :param kwargs: Keyword Arguments version of args
+        :type kwargs: various
         """
 
         python_version = sys.version_info[0]
@@ -105,20 +129,24 @@ class Open(object):
     def __exit__(self, exception_type, exception_value, traceback):
         """Called when a 'with' statement exits, closes file handle
 
-        :rtype : None
         :param exception_type: Type of exception, if any
+        :type exception_type: type
+
         :param exception_value: Value of exception, if any
+        :type exception_value: error-dependent
+
         :param traceback: Traceback to error line, if any
+        :type traceback: traceback
         """
 
         self.close()
+        print(type(exception_type))
+        print(type(exception_value))
+        print(type(traceback))
 
     @staticmethod
     def close_all():
-        """Close all file handles opened with Open
-
-        :rtype : None
-        """
+        """Close all file handles opened with Open"""
 
         file_handles = [copy for copy in Open._open_instances]
         for file_handle in file_handles:
@@ -138,10 +166,7 @@ class Open(object):
     #    available online.
 
     def close(self):
-        """Close file handle and modify appropriate instance variables
-
-        :rtype : None
-        """
+        """Close file handle and modify appropriate instance variables"""
 
         # The try...except block allows users to call close() multiple
         # times without an error.  This is consistent with File Objects.
@@ -154,8 +179,6 @@ class Open(object):
 
     def flush(self):
         """Flush internal buffer
-
-        :rtype : None
         """
 
         self.file_handle.flush()
@@ -163,6 +186,7 @@ class Open(object):
     def fileno(self):
         """Returns integer file descriptor
 
+        :returns : File descriptor
         :rtype : int
         """
 
@@ -171,6 +195,7 @@ class Open(object):
     def isatty(self):
         """Returns True if file is connected to tty(-like) device
 
+        :returns : True if file connected to tty(-like) device, else False
         :rtype : bool
         """
 
@@ -179,27 +204,38 @@ class Open(object):
     def next(self, *args, **kwargs):
         """Detects Python version, calls proper next method, and returns line
 
+        :returns : Next line of file
         :rtype : str
+
         :param args: Arguments to be passed the File Object
+        :type args: various
+
         :param kwargs: Keyword Arguments version of args
+        :type kwargs: various
         """
 
         return self.__next__(*args, **kwargs)
 
-    def read(self, size=-1):
-        """Returns rest of file or [size] bytes as a single string
+    def read(self, limit=-1):
+        """Returns rest of file or [limit] bytes as a single string
 
+        :returns : Rest of file or [limit] bytes
         :rtype : str
-        :param size: Max bytes to read from file
+
+        :param limit: Max bytes to read from file
+        :type limit: int
         """
 
-        return self.file_handle.read(size)
+        return self.file_handle.read(limit)
 
     def readline(self, limit=-1):
         """Returns one line from the file unless [limit] bytes reached
 
+        :returns : Next line of file or [limit] bytes
         :rtype : str
+
         :param limit: Max bytes to read from file
+        :type limit:
         """
 
         return self.file_handle.readline(limit)
@@ -216,18 +252,21 @@ class Open(object):
     def seek(self, offset, whence=0):
         """Set files position to [whence] + [offset] bytes
 
-        :rtype : None
         :param offset: Number of bytes to move from whence [reference]
+        :type offset: int
+
         :param whence: Reference position for [offset], possible values are:
                        0 = beginning of file [Default]
                        1 = current position
                        2 = end of file
+        :type whence: int
         """
         self.file_handle.seek(offset, whence)
 
     def tell(self):
         """Return position in file in bytes
 
+        :returns : Position in file in bytes
         :rtype : int
         """
 
@@ -236,8 +275,8 @@ class Open(object):
     def truncate(self, size=None):
         """Truncate file size to current position or [size]
 
-        :rtype : None
         :param size: Number of bytes to truncate file to
+        :type size: int
         """
 
         if size is None:
@@ -247,8 +286,8 @@ class Open(object):
     def write(self, string):
         """Write string to file
 
-        :rtype : None
         :param string: String to write to file
+        :type string: str
         """
 
         self.file_handle.write(string)
@@ -256,8 +295,35 @@ class Open(object):
     def writelines(self, sequence):
         """Write list of lines to file
 
-        :rtype : None
         :param sequence: Any iterable containing line to write to file
+        :type sequence: iterable
         """
 
         self.file_handle.writelines(sequence)
+
+
+def filecloser(function):
+    """Calls the wrapper passing [function] and returns the wrapped function
+
+    :returns: The function within a wrapper that closes all files after running
+    :rtype : function
+
+    :param function: The function to wrap
+    :type function: function
+    """
+
+    def filecloser_wrapper(*args, **kwargs):
+        """Wraps [function] in try...finally block to close all files
+
+        :param args: Arguments to be passed to the File Object such as mode
+        :type args: various
+
+        :param kwargs: Keyword Arguments version of args
+        :type kwargs: various
+        """
+
+        try:
+            function(*args, **kwargs)
+        finally:
+            Open.close_all()
+    return filecloser_wrapper
