@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """Contains Open and filecloser, the two key components of PyFHI
 
 This file is essentially all there is to PyFHI (Python File Handling Improved),
@@ -16,7 +14,7 @@ Add '@filecloser' before each function you wish to wrap (ideally main())
 
 import sys
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 
 class Open(object):
