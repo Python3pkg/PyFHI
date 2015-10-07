@@ -2,10 +2,10 @@ from distutils.core import setup
 
 setup(
     name='pyfhi',
-    version='0.0rc1',
+    version='0.0rc2',
     packages=['pyfhi'],
     url='https://github.com/TheOneHyer/PyFHI',
-    download_url='https://github.com/TheOneHyer/PyFHI/tarball/0.0rc1',
+    download_url='https://github.com/TheOneHyer/PyFHI/tarball/0.0rc2',
     license='GPLv2',
     author='TheOneHyer',
     author_email='theonehyer@gmail.com',
@@ -14,7 +14,7 @@ setup(
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',

@@ -2,11 +2,12 @@
 
 This file is essentially all there is to PyFHI (Python File Handling Improved),
 one simply needs to import the one function and one class of this file to
-receive the functionality improvements of PyFHI. The README contains details
+receive the functionality improvements of PyFHI. ABSTRACT contains details
 of Open and filecloser but a minimally functional explanation of proper
 usage follows:
 
-import pyfhi
+from pyfhi import filecloser
+from pyfhi import Open
 Change all instances of 'open' to 'Open' (capitalize the 'O', this doesn't
                                           apply to things such as os.open)
 Add '@filecloser' before each function you wish to wrap (ideally main())
@@ -14,7 +15,7 @@ Add '@filecloser' before each function you wish to wrap (ideally main())
 
 import sys
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
 
 class Open(object):
