@@ -2,23 +2,24 @@ from distutils.core import setup
 
 setup(
     name='pyfhi',
-    version='0.0rc2',
+    version='1.0.0',
     packages=['pyfhi'],
     url='https://github.com/TheOneHyer/PyFHI',
-    download_url='https://github.com/TheOneHyer/PyFHI/tarball/0.0rc2',
+    download_url='https://github.com/TheOneHyer/PyFHI/tarball/1.0.0',
     license='GPLv2',
     author='TheOneHyer',
     author_email='theonehyer@gmail.com',
     description='PyFHI is a single script designed to fix issues with Python '
                 'file handling.See README for more details.',
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
+        'Topic :: Scientific/Engineering :: Bio-Informatics',
         'Topic :: Software Development'
     ],
     keywords='file handling python closer close all'
