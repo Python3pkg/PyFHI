@@ -14,7 +14,7 @@ Add '@filecloser' before each function you wish to wrap (ideally main())
 
 Copyright:
 
-    __init__.py PyFHI functions for handling file handles
+    PyFHI.py PyFHI functions for handling file handles
     Copyright (C) 2015  Alex Hyer
 
     This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ __email__ = 'theonehyer@gmail.com'
 __license__ = 'GPLv3'
 __maintainer__ = 'Alex Hyer'
 __status__ = 'Inactive'
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 
 
 class Open(object):
