@@ -2,17 +2,17 @@ from distutils.core import setup
 
 setup(
     name='pyfhi',
-    version='1.0.0',
+    version='1.0.3',
     packages=['pyfhi'],
     url='https://github.com/TheOneHyer/PyFHI',
-    download_url='https://github.com/TheOneHyer/PyFHI/tarball/1.0.0',
-    license='GPLv2',
+    download_url='https://github.com/TheOneHyer/PyFHI/tarball/1.0.3',
+    license='GPLv3',
     author='TheOneHyer',
     author_email='theonehyer@gmail.com',
     description='PyFHI is a single script designed to fix issues with Python '
                 'file handling.See README for more details.',
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 7 - Inactive',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',

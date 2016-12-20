@@ -1,6 +1,17 @@
 # PyFHI
 -------
 
+!!!DO NOT USE!!!
+
+PyFHI was written before I was aware of such concepts as garbage collecting
+and libraries like [contextlib.ExitStack](https://docs.python.org/3/library/contextlib.html#contextlib.ExitStack). PyFHI is short-sighted
+and can result in undesireable behaviors like premature closing of all file
+handles. See [this Reddit post](https://www.reddit.com/r/Python/comments/3o1clp/pyfhi_python_file_handling_improved/)
+for details on the dangers adn alternatives to PyFHI.
+
+# Old Docs
+----------
+
 PyFHI (Python File Handling Improved) improves how Python handles files and
 such that all files are closed in case a program crashes without the need
 of *with* statements, code is less indented and more practical, and script
