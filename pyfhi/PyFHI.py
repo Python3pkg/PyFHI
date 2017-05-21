@@ -146,7 +146,7 @@ class Open(object):
         if python_version == 3:
             return self.file_handle.__next__(*args, **kwargs)
         elif python_version == 2:
-            return self.file_handle.next()
+            return next(self.file_handle)
 
     def __exit__(self, exception_type, exception_value, traceback):
         """Called when a 'with' statement exits, closes file handle
@@ -162,9 +162,9 @@ class Open(object):
         """
 
         self.close()
-        print(type(exception_type))
-        print(type(exception_value))
-        print(type(traceback))
+        print((type(exception_type)))
+        print((type(exception_value)))
+        print((type(traceback)))
 
     @staticmethod
     def close_all():
